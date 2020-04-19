@@ -1,0 +1,80 @@
+import { Component, OnInit, Input } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+
+import { Post } from './Post.model'
+import { Certif } from '../certif.model';
+
+
+
+@Component({
+  selector: 'app-certif-details',
+  templateUrl: './certif-details.component.html',
+  styleUrls: ['./certif-details.component.css']
+})
+export class CertifDetailsComponent implements OnInit {
+  element: { id: number, name: string }
+  loadedCertif: Certif[] = [];
+  
+  Description: string;
+
+  identifier: string;
+  certif: Certif;
+  name : string ;
+
+  constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient) { }
+
+  //@Input() certif : Certif;
+  //@Input() index : number ;
+
+  ngOnInit() {/*
+    this.element = {
+      id : this.route.snapshot.params['id'],
+      name : this.route.snapshot.params['name'],
+    };
+    this.route.params.subscribe(
+      (params : Params) => {
+        this.element.id = params['id'];
+        this.element.name = params['name'];
+      }
+      )
+      */
+    this.identifier = this.route.snapshot.params['identifier'];
+    this.http.get('https://ng-prototype-10c50.firebaseio.com/posts.json')
+      .pipe(
+        map(responseData => {
+          const postsArray = [];
+          for (const key in responseData) {
+            if (responseData.hasOwnProperty((key))) {
+              postsArray.push({ ...responseData[key], id: key });
+
+            }
+          }
+          console.log(postsArray);
+          return postsArray;
+        })
+      ).pipe(map(array => {
+        return array.find(element => element.name === this.identifier);
+      }))
+      .subscribe(posts => {
+        console.log('inside subscribe', posts);
+        this.certif = posts;
+        console.log('certif inside subscribe', this.certif.name);
+      })
+
+    console.log('certif outside susbscribe', this.certif);
+    console.log(this.identifier);
+    this.name = this.identifier;
+  }
+
+  sampleClick(){}
+  /*
+    sampleClick(){
+      console.log("you clicked me!");
+      console.log(this.selectedTypeahead);
+      console.log(this.name);
+      }
+      */
+
+  }

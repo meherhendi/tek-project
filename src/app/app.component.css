@@ -1,0 +1,10 @@
+/*.router-outlet {
+  display: flex;
+}*/
+.float {
+    position: fixed ;
+    bottom: 1rem;
+    right: 1rem;
+    width: 6em;
+    height: 4.5em;
+  }

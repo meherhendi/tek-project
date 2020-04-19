@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "tekapp",
+      "public": "dist/tekapp",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+::ng-deep nb-layout-column {
+    justify-content: center; /*center*/ /*right*/
+    display: flex;
+    margin: 0.5rem 0 3rem 2rem;
+    
+  }
+  nb-chat {
+    /*position: fixed ;*/
+    height: 50rem ; /*50rem*/
+    width: 500px;
+    margin: 0.5rem 0 2rem 2rem;
+    
+  }
+  

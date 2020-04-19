@@ -1,0 +1,2 @@
+The Certified Ethical Hacker (CEH) program is the most comprehensive ethical hacking course on the globe to help information security professionals   to     The course helps you assess the security posture of an organization by identifying vulnerabilities in the network and system infrastructure to determine if unauthorized access is possible. The CEH is the first of a series of 3 comprehensive courses (CEH, ECSA and the APT course) to help a cyber security professional master penetration testing.
+                

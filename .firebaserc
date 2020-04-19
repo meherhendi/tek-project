@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "ng-prototype-10c50": {
+      "hosting": {
+        "tekapp": [
+          "ng-prototype-10c50"
+        ]
+      }
+    }
+  }
+}
