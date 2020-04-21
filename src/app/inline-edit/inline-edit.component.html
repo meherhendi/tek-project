@@ -1,0 +1,21 @@
+<!--
+<h1>Hover the 100 $</h1>
+<app-edit-input [data]='cost' (focusOut)='saveCost($event)'></app-edit-input>
+<code> My cost : {{ cost | json}} </code>
+<div class="div">
+    {{cost}}
+</div>
+-->
+
+
+<div class="container">
+    <h3>input editor</h3>
+    <div class="row">
+        <div class="col-md-4">
+            <input-editor label="First Name" id="txtname" [(ngModel)]="name" type="text" required="true"
+                requiredMessage="First Name is a Required Field" placeholder="Enter First Name"
+                (onSave)="sampleClick()">
+            </input-editor>
+        </div>
+    </div>
+</div>

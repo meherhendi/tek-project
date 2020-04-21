@@ -1,0 +1,53 @@
+<div class="container">
+	<div class="row">
+		<div class="col-sm">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Admin</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let entity of entities; index as index">
+						<td style="width:50%">
+							<editable (update)="updateField(index, 'name')">
+								<ng-template viewMode>{{entity.name}}</ng-template>
+								<ng-template editMode>
+									<input [formControl]="getControl(index, 'name')" focusable editableOnEnter>
+								</ng-template>
+							</editable>
+						</td>
+						<td style="width:50%">
+							<editable (update)="updateField(index, 'isAdmin')">
+
+								<ng-template viewMode>{{entity.isAdmin}}</ng-template>
+								<ng-template editMode>
+									<input type="checkbox"
+										[formControl]="getControl(index, 'isAdmin')">{{entity.isAdmin}}
+								</ng-template>
+							</editable>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	--- Original Entities ---
+	<br>
+
+	<code>
+  {{entities | json }}
+</code>
+
+	<br>
+	<br>
+
+	--- ArrayForm Value ---
+
+	<br>
+	<code>{{controls.value | json }}</code>
+</div>
+
+

@@ -1,0 +1,193 @@
+<p>certif-forms works!</p>
+
+<div *ngIf="!(authenticationService.userData | async)">
+  <h1>please log in</h1>
+</div>
+
+<div class="container-fluid" *ngIf="authenticationService.userData | async">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form [formGroup]="CertifForm" (ngSubmit)="onSubmit()">
+        <!--<div formGroupName="certif_general_info">-->
+        <div class="form-group">
+          <label for="name" class="control-label required">Certification Name :</label>
+          <input type="text" id="name" formControlName="name" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="description" class="control-label required">Description :</label>
+          <input type="text" id="Description" formControlName="Description" class="form-control">
+        </div>
+        <!--
+        <input type='file' (change)="onSelectFile($event)" formControlName="imagePath"><br>
+        <div class="form-group">
+            <label for="imagePath">imagePath :</label>
+            <br>
+            <img [src]="url"> <br>
+            
+            <input type="text" id="imagePath" formControlName="imagePath" class="form-control" #imagePath>
+            <img [src]="imagePath.value" class="img-responsive" max-height="150">
+        </div>
+      -->
+        <!--
+        <app-image-url></app-image-url>
+        -->
+        <!--<label for="imagePath">image URL :</label>
+                        <input type="url" id="imagePath" formControlName="imagePath" class="form-control">
+                        <label for="imagePath">imagePath</label>
+                        <input type="url" id="imagePath" formControlName="imagePath" class="form-control">
+        </div>-->
+
+        <ngb-tabset [justify]="currentJustify">
+          <ngb-tab title="Upload Image">
+            <ng-template ngbTabContent>
+
+              <input type="file" (change)="uploadFile($event)">
+
+
+              <!--
+              <label>Select file to upload</label>
+              <input type="file" accept="image/*" class="form-control" #fileUploader formControlName="imageUrl"
+                (change)="showPreview($event)">
+              -->
+              <!--
+              <div class="text-danger" *ngIf="isSubmitted && formControls.imageUrl.errors?.required">This field is
+                required.
+              </div>
+              -->
+
+              <!--
+              <input type='file' (change)="onSelectFile($event)" formControlName="imagePath"><br>
+              
+              <uploader></uploader>
+
+            -->
+
+            </ng-template>
+          </ngb-tab>
+          <ngb-tab>
+            <ng-template ngbTabTitle> Insert Image url</ng-template>
+            <ng-template ngbTabContent>
+              <div class="form-group">
+                <label for="imagePath">imagePath :</label>
+                <br>
+                <!-- <img [src]="url"> <br> -->
+
+                <input type="text" id="imagePath" formControlName="imagePath" class="form-control" #imagePath
+                  placeholder="paste url here">
+                <img [src]="imagePath.value" class="img-responsive" *ngIf="imagePath.value" width="200" height="200">
+
+
+                <!-- style="width: 18rem ; height: 10rem" -->
+                <!-- max-height="18rem" -->
+                <!-- <img *ngIf="!imagePath.value" [src]="imagePath.value" class="img-responsive"> -->
+              </div>
+            </ng-template>
+          </ngb-tab>
+
+        </ngb-tabset>
+
+
+
+
+        <div class="form-group">
+          <label for="Purpose">Purpose</label>
+          <textarea type="text" id="Purpose" formControlName="Purpose" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="passing_info">Passing Information</label>
+          <textarea type="text" id="passing_info" formControlName="passing_info" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="official-link">official website link :</label>
+          <input type="url" id="official-link" formControlName="official-link" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="tek-up-link">official Tek-up learning (tek-online) link :</label>
+          <input type="url" id="tek-up-link" formControlName="tek-up-link" class="form-control">
+        </div>
+        <!--
+          <div class="form-group">
+            <label for="sections">sections :</label>
+            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+              <div class="btn-group mr-2" role="group" aria-label="First group" *ngFor="let section of sections ; let i=index">
+                <label class="btn btn-info">
+                  <input type="checkbox" [value]="section.value" (change)="addtolist($event)"> {{section}}
+                </label>
+              </div>
+              </div>
+            
+            -->
+
+
+        <!--<div class="btn-group btn-group-toggle">
+            <label class="btn-primary" ngbButtonLabel>
+              <input type="checkbox" formControlName="left" ngbButton> security
+            </label>
+            <label class="btn-primary" ngbButtonLabel>
+              <input type="checkbox" formControlName="middle" ngbButton> software engineering
+            </label>
+            <label class="btn-primary" ngbButtonLabel>
+              <input type="checkbox" formControlName="right" ngbButton> Data science
+            </label>
+          </div>
+
+          <hr>
+          pre>{{checkboxGroupForm.value | json}}</pre>
+          </div>-->
+
+        <div class="form-group">
+          <label for="passing_info">Chapters</label>
+          <textarea type="text" id="Chapters" formControlName="Chapters" class="form-control"></textarea>
+        </div>
+        <!--</div>-->
+        <!--<div formGroupName="cerif_our_info">-->
+        <div class="form-group">
+          <label for="Related_Certif">Similar Certification</label>
+          <textarea type="text" id="Related_Certif" formControlName="Related_Certif" class="form-control"></textarea>
+        </div>
+        <!--</div>-->
+
+        <div formGroupName="sectionstest">
+          <div class="form-group">
+            <label for="sectionstest">Sections :</label>
+            <div class="row"></div>
+            <label class="btn btn-info mr-2">
+              <input type="checkbox" formControlName="security" ngbButton> Security
+            </label>
+            <label class="btn btn-info mr-2">
+              <input type="checkbox" formControlName="GL" ngbButton> Software Engineer
+            </label>
+            <label class="btn btn-info mr-2">
+              <input type="checkbox" formControlName="Data_science" ngbButton> Data Science
+            </label>
+            <label class="btn btn-info mr-2">
+              <input type="checkbox" formControlName="Web_Mobile" ngbButton> Web Mobile Devolopement
+            </label>
+
+          </div>
+        </div>
+
+        <button class="btn btn-primary m-1" type="submit" [disabled]="!CertifForm.valid">Submit</button>
+        <button class="btn btn-primary m-1" type="reset">Clear</button>
+        <button class="btn btn-primary m-1" type="reset" (click)="onReturn()">Go back</button>
+      </form>
+
+      <!--<form [formGroup]="checkboxGroupForm">
+        <div class="btn-group btn-group-toggle">
+          <label class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups" ngbButtonLabel>
+            <div class="btn-group mr-2" role="group" aria-label="First group"></div>
+            <input type="checkbox" formControlName="left" ngbButton> Left (pre-checked)
+          </label>
+          <label class="btn-primary" ngbButtonLabel>
+            <input type="checkbox" formControlName="middle" ngbButton> Middle
+          </label>
+          <label class="btn-primary" ngbButtonLabel>
+            <input type="checkbox" formControlName="right" ngbButton> Right
+          </label>
+        </div>
+      </form>
+      <hr>
+      <pre>{{checkboxGroupForm.value | json}}</pre> -->
+    </div>
+  </div>
+</div>

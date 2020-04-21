@@ -1,0 +1,24 @@
+
+<div class="container">
+<input class="form-control mb-4" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
+  placeholder="&#61442;  Start searching for a Certification">
+  <!-- 
+  <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
+  placeholder="&#61442;  Start searching for a Certification"> 
+-->
+
+<div *ngFor="let certif of loadedCertif | filter:searchText"></div>
+
+<!-- <div class="container"> -->
+  <div class="card text-center m-3" style="width: 18rem;" *ngFor="let certif of loadedCertif | filter:searchText">
+    <img class="card-img-top" style="width: 18rem ; height: 10rem" src="{{certif.imagePath}}" alt="Card image cap">
+
+    <div class="card-body">
+      <h5 class="card-title">{{certif.name}}</h5>
+      <p class="card-text">{{Description}}</p>
+      <a [routerLink]="['/certifdetails' , certif.name]" class="stretched-link">more details</a>
+      <!--href="/certifdetails/certif.name" class="stretched-link"-->
+    </div>
+  </div>
+
+</div>
