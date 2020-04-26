@@ -4,6 +4,7 @@ import { map , filter } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Certif } from 'src/app/certification/certif.model' ;
 import { element } from 'protractor';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -14,6 +15,8 @@ import { element } from 'protractor';
 })
 export class Test2Component implements OnInit {
 
+  faCoffee = faCoffee;
+  currentJustify = 'fill';
   // Input 
   name: string ;
   middle: string = 'D.';

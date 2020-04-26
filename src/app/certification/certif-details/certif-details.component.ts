@@ -18,6 +18,7 @@ export class CertifDetailsComponent implements OnInit {
   identifier : string;
   loadedCertif : Certif[] = [] ;
   certif : Certif ;
+  currentJustify = 'fill';
   
   constructor(private router : Router ,
     private http: HttpClient , 

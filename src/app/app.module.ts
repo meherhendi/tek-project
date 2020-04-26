@@ -6,7 +6,7 @@ import { AngularFirestoreModule, AngularFirestore } from 'angularfire2/firestore
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
-import {NgbTabsetModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbTabsetModule, NgbDatepicker, NgbDatepickerModule} from '@ng-bootstrap/ng-bootstrap';
 import { AngularFireAuthGuard, redirectLoggedInTo } from '@angular/fire/auth-guard';
 import { AuthGardGuard } from './auth/auth-gard.guard';
 import { AngularFireStorageModule } from '@angular/fire/storage';
@@ -35,7 +35,7 @@ import { ChatbotComponent } from './chatbot/chatbot.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NbThemeModule, NbLayoutModule , NbChatModule , NbSpinnerModule ,
         NbAlertModule, NbIconModule, NbCheckboxModule , NbInputModule , 
-        NbActionsModule , NbUserModule , NbContextMenuModule , NbSearchModule   } from '@nebular/theme';
+        NbActionsModule , NbUserModule , NbContextMenuModule , NbSearchModule , NbDatepickerModule  } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { TestComponent } from './test/test.component';
 import { EditableComponent } from './test/editable/editable.component';
@@ -60,6 +60,7 @@ import { Test2Component } from './test2/test2.component';
     { path: 'inline' , component : EditInputComponent } ,
     { path: 'test2' , component : Test2Component } ,
     { path: 'test2/:identifier' , component : Test2Component } ,
+    { path: 'scheduler', loadChildren: () => import('./certification/scheduler/scheduler.module').then(m => m.SchedulerModule) },
 
   ] ;
 
@@ -104,8 +105,8 @@ import { Test2Component } from './test2/test2.component';
     
     AutofocusDirective,
     
-    Test2Component ,
-
+    Test2Component,
+    
     
 
     
@@ -160,9 +161,11 @@ import { Test2Component } from './test2/test2.component';
     Ng2SearchPipeModule,
 
     FontAwesomeModule,
+
+    NgbDatepickerModule
     
   ],
   providers: [AngularFirestoreModule , AngularFireModule , Platform  ], //AngularFireDatabase
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent ]
 })
 export class AppModule { }

@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/certification', pathMatch: 'full' },
   { path: 'certification', component: CertificationComponent },
   { path: 'CertifDetails', component: CertifDetailsComponent },
+  { path: 'scheduler', loadChildren: () => import('./certification/scheduler/scheduler.module').then(m => m.SchedulerModule) },
   //children: [
     
     //{ path: 'new', component: RecipeEditComponent },

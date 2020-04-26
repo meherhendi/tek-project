@@ -13,14 +13,17 @@
             </div>
             <div class="row mb-4">
                 <div class="col-md-6">
-                    <a href="#">
-                        <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+                    <a>
+                        <!-- <img class="img-fluid" src="http://placehold.it/500x300" alt=""> -->
+                        <button type="button" class="btn btn-primary btn-lg btn-radius"
+                            (click)="cliked()">Schedule White Test</button>
                     </a>
                 </div>
 
                 <div class="col-md-6">
                     <a href="#">
-                        <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+                        <!-- <img class="img-fluid" src="http://placehold.it/500x300" alt=""> -->
+                        <button type="button" class="btn btn-warning btn-lg" (click)="cliked()">Online Resources</button>
                     </a>
                 </div>
             </div>
@@ -33,40 +36,75 @@
             </div>
         </div>
     </div>
-  
+<!--
     <div class="row">
-        <div class="story-button col-md-3">
-            <img class="avatar-image m-3" src="/assets/avatar-01.jpg" alt="AVATAR" (click)="cliked()">
+        <div class="story-button col-md-4 center">
+            <i class="fas fa-coffee"></i>
+            <img class="avatar-image m-3 mx-auto d-block" src="/assets/chapters.png" alt="AVATAR" id="Chapters-button"
+                (click)="cliked()">
         </div>
-        <div class="story-button col-md-3">
-            <img class="avatar-image m-3" src="/assets/avatar-01.jpg" alt="AVATAR" (click)="cliked()">
+        <div class="story-button col-md-4">
+            <img class="avatar-image m-3 mx-auto d-block" src="/assets/Purpose.png" alt="AVATAR" id="Purpose-button"
+                (click)="cliked()">
         </div>
-        <div class="story-button col-md-3">
-            <img class="avatar-image m-3" src="/assets/avatar-01.jpg" alt="AVATAR" (click)="cliked()">
+        <div class="story-button col-md-4">
+            <img class="avatar-image m-3 mx-auto d-block" src="/assets/Passing-info.png" alt="AVATAR"
+                id="passing_info-button" (click)="cliked()">
         </div>
+    -->
+        <!--
         <div class="story-button col-md-3">
-            <img class="avatar-image m-3" src="/assets/avatar-01.jpg" alt="AVATAR" (click)="cliked()">
+            <img class="avatar-image m-3" src="/assets/avatar-01.jpg" alt="AVATAR" id="Chapters-button" (click)="cliked()">
+        </div>
+        
+    </div>
+    -->
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <ngb-tabset [justify]="currentJustify">
+                <ngb-tab title="Chapters">
+                    <ng-template ngbTabContent>
+                        <h1>tab1</h1>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab>
+                    <ng-template ngbTabTitle> Purpose</ng-template>
+                    <ng-template ngbTabContent>
+                        <h1>tab2</h1>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab>
+                    <ng-template ngbTabTitle> passing Requirements</ng-template>
+                    <ng-template ngbTabContent>
+                        <h1>tab3</h1>
+                    </ng-template>
+                </ngb-tab>
+
+            </ngb-tabset>
         </div>
     </div>
     <div class="row">
         <div class="selected-categorie">
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum, obcaecati magnam officiis, minima aperiam iste aut consectetur ratione illum molestias voluptate, soluta esse fuga unde animi hic quae atque quos?</p>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum, obcaecati magnam officiis, minima aperiam
+                iste aut consectetur ratione illum molestias voluptate, soluta esse fuga unde animi hic quae atque quos?
+            </p>
         </div>
     </div>
     <h1>Related Certifications</h1>
     <div class="row">
-            <div class="col-md-3 col-lg-3">
-                <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-            </div>
-            <div class="col-md-3 col-lg-3">
-                <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-            </div>
-            <div class="col-md-3 col-lg-3">
-                <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-            </div>
-            <div class="col-md-3 col-lg-3">
-                <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-            </div>
+        <div class="col-md-3 col-lg-3">
+            <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+        </div>
+        <div class="col-md-3 col-lg-3">
+            <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+        </div>
+        <div class="col-md-3 col-lg-3">
+            <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+        </div>
+        <div class="col-md-3 col-lg-3">
+            <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+        </div>
 
     </div>
 </div>

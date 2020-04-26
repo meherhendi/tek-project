@@ -1,92 +1,111 @@
-
-<!-- Page Content -->
-<div class="container" > <!--*ngIf="authenticationService.userData | async"-->
-    
-    <!-- Portfolio Item Heading --> <!--
-    <h1 class="my-4">primary Title
-        <small>Secondary Title</small>
-    </h1>
-    -->
-    <!-- Portfolio Item Row -->
+<div class="container-fluid">
     <div class="row">
-
-        <div class="col-md-8 ">
-            
-            <!--<span> {{authenticationService.userData | async}}</span>-->
-
-            <img class="img-fluid" src="{{certif.imagePath}}" style="width: 45rem ; height: 25rem" alt=""> 
+        <div class="col-md-6 ">
+            <img class="img-fluid" src="{{certif.imagePath}}" style="width: 45rem ; height: 25rem" alt="">
             <br>
-            <!-- tags : -->
-
             <span *ngIf="certif.sectionstest.security" class="badge badge-info mr-2">Security</span> 
             <span *ngIf="certif.sectionstest.GL" class="badge badge-warning mr-2">Software Engineer</span> 
             <span *ngIf="certif.sectionstest.Data_science" class="badge badge-dark mr-2">Data Science</span> 
             <span *ngIf="certif.sectionstest.Web_Mobile" class="badge badge-success mr-2">Web & Mobile</span> 
-            
-            
-            <!-- &nbsp;--> <!-- *ngIf="certif.sectionstest.includes(security == true)" -->
-            <h3 class="my-3">About the Exam :</h3>
-            {{certif.passing_info}}
-           
-            <h3 class="my-3">The Purpose of this certification is </h3>
-            {{certif.Purpose}}
-            <br>
-            <h3 class="my-3">Passing Requirements are </h3>
-            {{passing_info}}
-            <br>
-            <a href="{{certif.tek-up-link}}">available courses</a><br />
-            <a href="{{certif.Officialsite}}">More info at Official Website
-                website</a>
-            <br>
-
-
         </div>
 
-        <div class="col-md-4">
-            <h3 class="my-3">{{certif.name}}</h3>
-            <!-- <p>{{certif.Description}}</p> -->
-            <p *ngIf="!(authenticationService.userData |async)">{{certif.Description}}</p>
-            <textarea-editor [(ngModel)]="certif.Description" stringlength="300" id="nondisable"  maxheight="200px" (onSave)="sampleClick()"
-            required="true" requiredMessage="BIO is a Required Field" *ngIf="authenticationService.userData | async"></textarea-editor>
-            <h3 class="my-3">Certification Chapters</h3>
-            <p *ngIf="!(authenticationService.userData |async)">{{certif.Chapters}}</p>
-            <textarea-editor [(ngModel)]="certif.Chapters" stringlength="300" id="nondisable" label="Bio" maxheight="200px" (onSave)="sampleClick()"
-            required="true" requiredMessage="BIO is a Required Field" style="white-space: pre-wrap ;" *ngIf="authenticationService.userData |async"></textarea-editor>
-            
-        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="text-center">{{certif.name}}</h1>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col-md-6 text-center">
+                    <a>
+                        <!-- <img class="img-fluid" src="http://placehold.it/500x300" alt=""> -->
+                        <button type="button" class="btn btn-primary btn-lg btn-radius"
+                            (click)="cliked()">Schedule White Test</button>
+                    </a>
+                </div>
 
+                <div class="col-md-6 text-center">
+                    <a href="#">
+                        <!-- <img class="img-fluid" src="http://placehold.it/500x300" alt=""> -->
+                        <button type="button" class="btn btn-warning btn-lg" (click)="cliked()">Online Resources</button>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="certif-desciption col-md-12">
+                    <p>{{certif.Description}}</p>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <!-- Related Projects Row -->
-    <h3 class="my-4">Related Certifications</h3>
-
+<!--
     <div class="row">
-
-        <div class="col-md-3 col-sm-6 mb-4">
-            <a href="#">
-                <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-            </a>
+        <div class="story-button col-md-4 center">
+            <i class="fas fa-coffee"></i>
+            <img class="avatar-image m-3 mx-auto d-block" src="/assets/chapters.png" alt="AVATAR" id="Chapters-button"
+                (click)="cliked()">
         </div>
-
-        <div class="col-md-3 col-sm-6 mb-4">
-            <a href="#">
-                <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-            </a>
+        <div class="story-button col-md-4">
+            <img class="avatar-image m-3 mx-auto d-block" src="/assets/Purpose.png" alt="AVATAR" id="Purpose-button"
+                (click)="cliked()">
         </div>
-
-        <div class="col-md-3 col-sm-6 mb-4">
-            <a href="#">
-                <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-            </a>
+        <div class="story-button col-md-4">
+            <img class="avatar-image m-3 mx-auto d-block" src="/assets/Passing-info.png" alt="AVATAR"
+                id="passing_info-button" (click)="cliked()">
         </div>
+    -->
+        <!--
+        <div class="story-button col-md-3">
+            <img class="avatar-image m-3" src="/assets/avatar-01.jpg" alt="AVATAR" id="Chapters-button" (click)="cliked()">
+        </div>
+        
+    </div>
+    -->
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <ngb-tabset [justify]="currentJustify">
+                <ngb-tab title="Purpose">
+                    <ng-template ngbTabContent>
+                        <p>{{certif.Purpose}}</p>>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab>
+                    <ng-template ngbTabTitle> Chapters</ng-template>
+                    <ng-template ngbTabContent>
+                        <p>{{certif.Chapters}}</p>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab>
+                    <ng-template ngbTabTitle> Passing Requirements</ng-template>
+                    <ng-template ngbTabContent>
+                        <p>{{certif.passing_info}}</p>
+                    </ng-template>
+                </ngb-tab>
+                <!-- <ngb-tab title="Chapters">
+                    <ng-template ngbTabContent>
+                        <p>certif.Chapters</p>>
+                    </ng-template>
+                </ngb-tab>
+            -->
 
-        <div class="col-md-3 col-sm-6 mb-4">
-            <a href="#">
-                <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-            </a>
+            </ngb-tabset>
+        </div>
+    </div>
+    <h1>you might also check</h1>
+    <div class="row">
+        <div class="col-md-3 col-lg-3">
+            <img class="img-fluid" src="http://placehold.it/400x200" alt="">
+        </div>
+        <div class="col-md-3 col-lg-3">
+            <img class="img-fluid" src="http://placehold.it/400x200" alt="">
+        </div>
+        <div class="col-md-3 col-lg-3">
+            <img class="img-fluid" src="http://placehold.it/400x200" alt="">
+        </div>
+        <div class="col-md-3 col-lg-3">
+            <img class="img-fluid" src="http://placehold.it/400x200" alt="">
         </div>
 
     </div>
-    <!-- /.row -->
-
 </div>
