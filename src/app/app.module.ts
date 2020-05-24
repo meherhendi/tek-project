@@ -60,7 +60,8 @@ import { Test2Component } from './test2/test2.component';
     { path: 'inline' , component : EditInputComponent } ,
     { path: 'test2' , component : Test2Component } ,
     { path: 'test2/:identifier' , component : Test2Component } ,
-    { path: 'scheduler', loadChildren: () => import('./certification/scheduler/scheduler.module').then(m => m.SchedulerModule) },
+    //{ path: 'scheduler', loadChildren: () => import('./certification/scheduler/scheduler.module').then(m => m.SchedulerModule) },
+    { path: 'scheduler/:identifier', loadChildren: () => import('./certification/scheduler/scheduler.module').then(m => m.SchedulerModule) },
 
   ] ;
 

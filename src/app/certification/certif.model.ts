@@ -8,7 +8,6 @@ export class Certif { //class Certif
     public Purpose : string;
     public passing_info : string;
     public sectionstest : string[];
-    
     public Related_Certif : string[];
 
     constructor(

@@ -1,3 +1,4 @@
+<!--
 It is possible to get the focus events with the current input value to emit results on focus with a great flexibility.
 
 In this simple example, a search is done no matter the content of the input:
@@ -8,17 +9,20 @@ In this simple example, a search is done no matter the content of the input:
   <li>it will limit the display to 10 results in all cases</li>
 </ul>
 
-<label for="typeahead-focus">Search for a state:</label>
+-->
+<label for="typeahead-focus">Search for a certification :</label>
 <input
   id="typeahead-focus"
   type="text"
   class="form-control"
   [(ngModel)]="model"
+  (ngModelChange)="doStuff(model)"
+  
   [ngbTypeahead]="search"
   (focus)="focus$.next($any($event).target.value)"
   (click)="click$.next($any($event).target.value)"
   #instance="ngbTypeahead"
-/>
+/> <!-- (change)="doStuff(model)" -->
 <hr>
 <!--<button (click)="notificationToparent()">emit</button>-->
 <pre>Model: {{ model | json }}</pre>

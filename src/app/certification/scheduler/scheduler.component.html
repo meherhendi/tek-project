@@ -1,31 +1,56 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-6">
-            <h2>Certification :</h2>
+<div class="container"> <!-- container-fluid -->
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Certification : {{identifier}}</h2>
+      
+      <!-- (change)="receiveMessage($event) -->
+      <!-- (outputToParent)="getOutputValue()" -->
+      <!-- (ngModelChange)="onChange($event) -->
+      <form [formGroup]="scheduleform" (ngSubmit)="onSubmit()">
+        <app-list-focus *ngIf="!identifier" (change2)="receiveMessage($event)"></app-list-focus>
+        <span *ngIf="identifier;then receiveMessage(identifier)" ></span>
+
+          <input type="radio" formControlName="WT-number" value="1"> First Test
+          <input type="radio" formControlName="WT-number" value="2"> Second Test
+          <input type="radio" formControlName="WT-number" value="3"> Third Test
+        <br>
+
+        <div class="form-group mt-3" *ngIf="scheduleform.get('WT-number').value == 2 || scheduleform.get('WT-number').value == 3 ">
+          <label for="white-test-token">White Test token :</label>
+          <input type="text" id="white-test-token" formControlName="WT-token" class="form-control">
         </div>
-        <div class="col-md-6">
-            <h2>second column</h2>
-            <app-list-focus ></app-list-focus> <!-- (outputToParent)="getOutputValue()" -->
-        </div>
-    </div>
+        <button class="btn btn-primary m-1" type="submit" >Submit</button> <!-- [disabled]="!scheduleform.valid" -->
+        </form> <!-- </form> -->
+        <br>
+      </div>
 
-    <p>Simple datepicker</p>
+    <div class="col-md-6 text-center">
+      
+      <p>Simple datepicker</p>
 
-    <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next"></ngb-datepicker>
+      <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next" (change)="onChangeDate()"></ngb-datepicker>
 
-    <hr />
+      <hr />
 
-    <button class="btn btn-sm btn-outline-primary mr-2" (click)="selectToday()">Select Today</button>
-    <button class="btn btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo()">To current month</button>
-    <button class="btn btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo({year: 2013, month: 2})">To Feb
+      <button class="btn btn-sm btn-outline-primary mr-2" (click)="selectToday()">Select Today</button>
+      <button class="btn btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo()">To current month</button>
+      <button class="btn btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo({year: 2013, month: 2})">To Feb
         2013</button>
 
-    <hr />
+      <hr />
 
-    <pre>Month: {{ date.month }}.{{ date.year }}</pre>
-    <pre>Model: {{ model | json }}</pre>
+      <pre>Month: {{ date.month }}.{{ date.year }}</pre>
+      <pre>Model: {{ model | json }}</pre>
+    </div>
+  
 
-</div>
+        <!--<h2>{{this.child | json}}</h2>-->
+        <p>result :</p>
+        <pre>Model: {{ message | json }}</pre>
 
-<!--<h2>{{this.child | json}}</h2>-->
 
+
+        <p>Form value: {{ scheduleform.value | json }}</p>
+        <br>
+        <br>
+        <p>identifier : {{identifier}}</p>
