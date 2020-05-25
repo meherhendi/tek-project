@@ -62,6 +62,7 @@ import { Test2Component } from './test2/test2.component';
     { path: 'test2/:identifier' , component : Test2Component } ,
     //{ path: 'scheduler', loadChildren: () => import('./certification/scheduler/scheduler.module').then(m => m.SchedulerModule) },
     { path: 'scheduler/:identifier', loadChildren: () => import('./certification/scheduler/scheduler.module').then(m => m.SchedulerModule) },
+    { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
 
   ] ;
 

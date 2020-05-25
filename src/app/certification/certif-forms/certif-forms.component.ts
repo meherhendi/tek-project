@@ -144,9 +144,7 @@ export class CertifFormsComponent implements OnInit {
     
     this.http.post('https://ng-prototype-10c50.firebaseio.com/posts.json', this.CertifForm.value).subscribe(
     (response) => console.log(response),
-    (error) => console.log(error)
-
-    
+    (error) => console.log(error)    
     )
   // this.router.navigate(['/form']);
   //this.todos$ = this.af.list('/todos');

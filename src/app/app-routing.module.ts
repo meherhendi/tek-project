@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'certification', component: CertificationComponent },
   { path: 'CertifDetails', component: CertifDetailsComponent },
   { path: 'scheduler', loadChildren: () => import('./certification/scheduler/scheduler.module').then(m => m.SchedulerModule) },
+  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
   //children: [
     
     //{ path: 'new', component: RecipeEditComponent },
