@@ -35,6 +35,10 @@ export class HttpserviceService {
        // return array.find(element => element.name === certif_displayed) ;
     //}))
     }
+    get_Schedule_WhiteTest(){
+      return this.http.get('https://ng-prototype-10c50.firebaseio.com/schedule.json')
+    }
+    
   
     Post_Schedule_WhiteTest_form(form){
       return this.http.post('https://ng-prototype-10c50.firebaseio.com/schedule.json', form)
