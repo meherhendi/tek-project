@@ -9,6 +9,7 @@ import {HttpserviceService} from 'src/app/shared/httpservice.service'
 import { Subscription } from 'rxjs';
 
 
+
 @Component({
   selector: 'app-certif-details',
   templateUrl: './certif-details.component.html',
@@ -24,6 +25,7 @@ export class CertifDetailsComponent implements OnInit {
   //loadedCertif : Certif[] = [] ;
   currentJustify = 'fill';
   certif : Certif = new Certif("",null,"","",[],"","",[],[]) ;
+  //cetif_inside_recommended : {name : string ;imagelink :}
   recommended : object[];
 
   

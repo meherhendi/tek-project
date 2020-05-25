@@ -33,6 +33,7 @@ export class SchedulerComponent implements OnInit {
       'date' : new FormControl() ,
     });
     console.log(this.scheduleform.get('WT-number').value);
+    //console.log("listening to value changes: ",this.model)
     
   }
 
@@ -42,6 +43,7 @@ export class SchedulerComponent implements OnInit {
 
   selectToday() {
     this.model = this.calendar.getToday();
+    console.log("log of this.model: ",this.model);
   }
 
   onChangeDate() {
