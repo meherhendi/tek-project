@@ -4,6 +4,9 @@ import { ListFocusComponent } from './list-focus/list-focus.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators  } from '@angular/forms';
 
+import {HttpserviceService} from 'src/app/shared/httpservice.service'
+
+
 @Component({
   selector: 'app-schedule',
   templateUrl: './scheduler.component.html',
@@ -19,13 +22,13 @@ export class SchedulerComponent implements OnInit {
   teststring :string  = 'hello' ;
   x : EventListener;
 
-  constructor(private calendar: NgbCalendar,private route : ActivatedRoute) { }
+  constructor(private calendar: NgbCalendar,private route : ActivatedRoute,private HttpService : HttpserviceService) { }
 
   @ViewChild(ListFocusComponent, { static: false }) child;
 
   ngOnInit() {
     this.identifier = this.route.snapshot.params['identifier'];
-    console.log(this.identifier);
+    // console.log(this.identifier);
     this.scheduleform= new FormGroup({
       'certif-name' : new FormControl(),
       'WT-token' : new FormControl (null,[Validators.required]),
@@ -37,24 +40,24 @@ export class SchedulerComponent implements OnInit {
     
   }
 
-  ngAfterViewInit() {
-    console.log("after view init :" + this.child);
-  }
+  // ngAfterViewInit() {
+  //   console.log("after view init :" + this.child);
+  // }
 
   selectToday() {
     this.model = this.calendar.getToday();
-    console.log("log of this.model: ",this.model);
+    // console.log("log of this.model: ",this.model);
   }
 
   onChangeDate() {
-    console.log("onchangedate" + this.model);
+    // console.log("onchangedate" + this.model);
     this.scheduleform.controls['date'].setValue(this.model); // doesn't work
 
   }
 
   receiveMessage($event) {
     this.message = $event;
-    console.log("event: "+$event+"message: "+this.message);
+    // console.log("event: "+$event+"message: "+this.message);
     this.scheduleform.controls['certif-name'].setValue(this.message);
     
     //this.message.subscribe(msg => console.log(msg));
@@ -63,8 +66,13 @@ export class SchedulerComponent implements OnInit {
   }
   onSubmit(){
     console.log(this.scheduleform.value);
-    console.log(this.date);
-    console.log("model: "+this.model);
+    // console.log(this.date);
+    // console.log("model: "+this.model);
+    this.HttpService.Post_Schedule_WhiteTest_form(this.scheduleform.value).subscribe(
+      (response) => console.log(response),
+      (error) => console.log(error)
+    );
+
     // this.scheduleform.controls['date'].setValue(this.model);
   }
 

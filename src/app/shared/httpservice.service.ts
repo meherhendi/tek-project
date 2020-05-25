@@ -18,7 +18,7 @@ export class HttpserviceService {
   }
 
   get_recommended_certif(certif_displayed) {
-    console.log("service function called !");
+    // console.log("service function called !");
     return this.http.get('https://ng-prototype-10c50.firebaseio.com/recommendation/'+certif_displayed+'.json') //https://ng-prototype-10c50.firebaseio.com/recommendation.json
     .pipe(
       map(responseData => {
@@ -34,5 +34,9 @@ export class HttpserviceService {
       )//.pipe(map( array => {
        // return array.find(element => element.name === certif_displayed) ;
     //}))
+    }
+  
+    Post_Schedule_WhiteTest_form(form){
+      return this.http.post('https://ng-prototype-10c50.firebaseio.com/schedule.json', form)
     }
 }

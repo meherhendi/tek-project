@@ -1,13 +1,17 @@
 <div class="container">
   <!-- container-fluid -->
-  <div class="row">
-    <div class="col-md-6">
+  <!-- <div class="row"> -->
+  <!-- <div class="col-md-6"> -->
+
+  <!-- (change)="receiveMessage($event) -->
+  <!-- (outputToParent)="getOutputValue()" -->
+  <!-- (ngModelChange)="onChange($event) -->
+  <form [formGroup]="scheduleform" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="mx-auto">
       <h2>Certification : {{identifier}}</h2>
-</div>
-      <!-- (change)="receiveMessage($event) -->
-      <!-- (outputToParent)="getOutputValue()" -->
-      <!-- (ngModelChange)="onChange($event) -->
-      <form [formGroup]="scheduleform" (ngSubmit)="onSubmit()">
+    </div>
+      <div class="col-md-6 mx-auto">
         <app-list-focus *ngIf="!identifier" (change2)="receiveMessage($event)"></app-list-focus>
         <span *ngIf="identifier;then receiveMessage(identifier)"></span>
 
@@ -21,42 +25,47 @@
           <label for="white-test-token">White Test token :</label>
           <input type="text" id="white-test-token" formControlName="WT-token" class="form-control">
         </div>
-        <button class="btn btn-primary m-1" type="submit">Submit</button> <!-- [disabled]="!scheduleform.valid" -->
+
         <!-- </form> -->
         <!-- <br> -->
         <!-- </div>  -->
+        <!-- </div> -->
+        <!-- </div> -->
+        <!-- <div class="col-md-6 text-center"> -->
+
+        <!-- <p>Simple datepicker</p> -->
+
+        <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next" (change)="onChangeDate()"
+          formControlName="date"></ngb-datepicker> <!-- [(ngModel)]="model" -->
+
+        <hr />
+
+        <button class="btn btn-sm btn-outline-primary mr-2" (click)="selectToday()">Select Today</button>
+        <button class="btn btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo()">To current month</button>
+        <!-- <button class="btn btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo({year: 2013, month: 2})">To Feb -->
+          <!-- 2013</button> -->
+
+        <hr />
+<!-- 
+        <pre>Month: {{ date.month }}.{{ date.year }}</pre>
+        <pre>Model: {{ model | json }}</pre> -->
+        <button class="btn btn-primary m-1" type="submit">Submit</button> <!-- [disabled]="!scheduleform.valid" -->
+      </div>
+
       <!-- </div> -->
-        <div class="col-md-6 text-center">
+    </div>
+  </form>
 
-          <p>Simple datepicker</p>
-
-          <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next" (change)="onChangeDate()"
-            formControlName="date"></ngb-datepicker> <!-- [(ngModel)]="model" -->
-
-          <hr />
-
-          <button class="btn btn-sm btn-outline-primary mr-2" (click)="selectToday()">Select Today</button>
-          <button class="btn btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo()">To current month</button>
-          <button class="btn btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo({year: 2013, month: 2})">To Feb
-            2013</button>
-
-          <hr />
-
-          <pre>Month: {{ date.month }}.{{ date.year }}</pre>
-          <pre>Model: {{ model | json }}</pre>
-        </div>
-      </form>
-
-      <!--<h2>{{this.child | json}}</h2>-->
-      <p>result :</p>
-      <pre>Model: {{ message | json }}</pre>
+  <!--<h2>{{this.child | json}}</h2>-->
+  <!-- <p>result :</p>
+  <pre>Model: {{ message | json }}</pre>
 
 
 
-      <p>Form value: {{ scheduleform.value | json }}</p>
-      <br>
-      <br>
-      <p>identifier : {{identifier}}</p>
-    
-  </div>
+  <p>Form value: {{ scheduleform.value | json }}</p>
+  <br>
+  <br>
+  <p>identifier : {{identifier}}</p> -->
+
 </div>
+<!-- </div> -->
