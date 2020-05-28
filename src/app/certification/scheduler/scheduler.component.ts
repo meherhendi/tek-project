@@ -30,12 +30,12 @@ export class SchedulerComponent implements OnInit {
     this.identifier = this.route.snapshot.params['identifier'];
     // console.log(this.identifier);
     this.scheduleform= new FormGroup({
-      'certif-name' : new FormControl(),
-      'WT-token' : new FormControl (null,[Validators.required]),
-      'WT-number' : new FormControl(),
+      'certif_name' : new FormControl(),
+      'WT_token' : new FormControl (null,[Validators.required]),
+      'WT_number' : new FormControl(),
       'date' : new FormControl() ,
     });
-    console.log(this.scheduleform.get('WT-number').value);
+    console.log(this.scheduleform.get('WT_number').value);
     //console.log("listening to value changes: ",this.model)
     
   }
@@ -58,7 +58,7 @@ export class SchedulerComponent implements OnInit {
   receiveMessage($event) {
     this.message = $event;
     // console.log("event: "+$event+"message: "+this.message);
-    this.scheduleform.controls['certif-name'].setValue(this.message);
+    this.scheduleform.controls['certif_name'].setValue(this.message);
     
     //this.message.subscribe(msg => console.log(msg));
     

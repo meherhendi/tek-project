@@ -15,15 +15,15 @@
         <app-list-focus *ngIf="!identifier" (change2)="receiveMessage($event)"></app-list-focus>
         <span *ngIf="identifier;then receiveMessage(identifier)"></span>
 
-        <input type="radio" formControlName="WT-number" value="1"> First Test
-        <input type="radio" formControlName="WT-number" value="2"> Second Test
-        <input type="radio" formControlName="WT-number" value="3"> Third Test
+        <input type="radio" formControlName="WT_number" value="1"> First Test
+        <input type="radio" formControlName="WT_number" value="2"> Second Test
+        <input type="radio" formControlName="WT_number" value="3"> Third Test
         <br>
 
         <div class="form-group mt-3"
-          *ngIf="scheduleform.get('WT-number').value == 2 || scheduleform.get('WT-number').value == 3 ">
+          *ngIf="scheduleform.get('WT_number').value == 2 || scheduleform.get('WT_number').value == 3 ">
           <label for="white-test-token">White Test token :</label>
-          <input type="text" id="white-test-token" formControlName="WT-token" class="form-control">
+          <input type="text" id="white-test-token" formControlName="WT_token" class="form-control">
         </div>
 
         <!-- </form> -->

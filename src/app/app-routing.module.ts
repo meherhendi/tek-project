@@ -6,7 +6,8 @@ import { CertificationComponent } from './certification/certification.component'
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/certification', pathMatch: 'full' },
+  { path: '', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
+  // { path: '', redirectTo: '/certification', pathMatch: 'full' },
   { path: 'certification', component: CertificationComponent },
   { path: 'CertifDetails', component: CertifDetailsComponent },
   { path: 'scheduler', loadChildren: () => import('./certification/scheduler/scheduler.module').then(m => m.SchedulerModule) },

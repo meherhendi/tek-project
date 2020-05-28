@@ -15,8 +15,8 @@
     </div> -->
     <!-- <div class="row">
         <input type="text" id="search"> <!-- formControlName="seach"-->
-    </div> -->
-    <div class="row">
+    </div>
+    <!-- <div class="row">
         <p>You can do filter table data, in this case with observables and our <code>NgbHighlight</code> component used
             in Typeahead</p>
             <br>
@@ -53,7 +53,57 @@
                     </td>
                 </tr>
             </tbody>
+        </table> -->
+
+        <!-- <p>{{ schedule_List | json }}</p>
+        <p>{{ schedule_List[0]["certif-name"] | json }}</p>
+        <div class="col-md-12" *ngFor="let schedule of schedule_List" >
+            <p>{{schedule.certif_name}}</p>
+        </div> -->
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">name</th>
+                    <th scope="col">White Test n°</th>
+                    <th scope="col">Test Code</th>
+                    <th scope="col">Test Date</th>
+                    <th scope="col">Accept / Deny</th>
+                    <th scope="col">key</th>
+                    <!-- <th scope="col">button</th> -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let schedule of schedule_List ; index as i"> <!-- | async -->
+                    <th scope="row">{{ i + 1 }}</th>
+                    <td>
+                        <ngb-highlight [result]="schedule.certif_name" [term]="filter.value"></ngb-highlight>
+                    </td>
+                    <td>
+                        <ngb-highlight [result]="schedule.WT_number | number" [term]="filter.value"></ngb-highlight>
+                    </td>
+                    <td>
+                        <ngb-highlight [result]="schedule.WT_token" [term]="filter.value"></ngb-highlight>
+                    </td>
+                    <td>
+                        <ngb-highlight [result]="schedule.date.day+'/'+schedule.date.month+'/'+schedule.date.year" [term]="filter.value"></ngb-highlight>
+                    </td>
+                    <td>
+                        <ngb-highlight [result]="" [term]="filter.value"></ngb-highlight>
+                        <button *ngIf="schedule.accepted == ['true'] || schedule.accepted === true" class="btn btn-sm btn-success mr-2" type="button">accepted</button> <!-- to make schedule.accepted == true work, true needs to be set as ['true'] -->
+                        <button *ngIf="schedule.accepted == ['false'] || schedule.accepted === false" class="btn btn-sm btn-danger mr-2" type="button">Denied</button> <!-- to make schedule.accepted == true work, true needs to be set as ['true'] -->
+                        <div *ngIf="schedule.accepted == undefined">
+                            <button class="btn btn-sm btn-success mr-2" type="button" (click)="Accept_Deny_Buttons(schedule.id,true)">Accept</button>
+                            <button class="btn btn-sm btn-danger" type="button" (click)="Accept_Deny_Buttons(schedule.id,false)">Deny</button>
+                        </div>
+                    </td>
+                    <td>
+                        <ngb-highlight [result]="schedule.id" [term]="filter.value"></ngb-highlight>
+                    </td>
+                </tr>
+            </tbody>
         </table>
 
-    </div>
+    <!-- </div> -->
 <!-- </div> -->

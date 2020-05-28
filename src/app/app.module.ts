@@ -50,7 +50,8 @@ import { Test2Component } from './test2/test2.component';
 
   //const redirectLoggedInToform = () => redirectLoggedInTo(['form']);
   const appRoutes : Routes = [
-    { path: '' , component : CertificationComponent  } ,
+    { path: '', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) }, //path : 'admin'
+    // { path: '' , component : CertificationComponent  } ,
     { path: 'certifdetails' , component : CertifDetailsComponent } ,
     { path: 'certifdetails/:identifier' , component : CertifDetailsComponent } ,
     { path: 'form' , component : CertifFormsComponent} , //, canActivate : [AuthGardGuard]
@@ -62,7 +63,7 @@ import { Test2Component } from './test2/test2.component';
     { path: 'test2/:identifier' , component : Test2Component } ,
     //{ path: 'scheduler', loadChildren: () => import('./certification/scheduler/scheduler.module').then(m => m.SchedulerModule) },
     { path: 'scheduler/:identifier', loadChildren: () => import('./certification/scheduler/scheduler.module').then(m => m.SchedulerModule) },
-    { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
+    // { path: '', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) }, //path : 'admin'
 
   ] ;
 

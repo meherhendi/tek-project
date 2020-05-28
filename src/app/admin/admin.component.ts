@@ -7,6 +7,22 @@ import { map, startWith } from 'rxjs/operators';
 
 import {HttpserviceService} from 'src/app/shared/httpservice.service'
 
+interface Date{
+  day:number;
+  month:number;
+  year:number
+}
+
+interface schedule {
+  id:string;
+  WT_token : string;
+  WT_number : string;
+  certif_name : string;
+  date:Date;
+  accepted:boolean;
+}
+
+
 
 interface Country {
   name: string;
@@ -60,6 +76,8 @@ export class AdminComponent implements OnInit {
   countries$: Observable<Country[]>;
   filter = new FormControl('');
 
+  schedule_List: schedule[] = [] ;
+
   constructor(pipe: DecimalPipe,private HttpService: HttpserviceService) { 
     this.countries$ = this.filter.valueChanges.pipe(
     startWith(''),
@@ -73,7 +91,32 @@ export class AdminComponent implements OnInit {
   ngOnDestroy(){}
 
   get_schedules(){
-    this.HttpService.testservice();
+    this.HttpService.get_Schedule_WhiteTest().subscribe(
+      (response) => {
+        console.log(response),
+        this.schedule_List = response , 
+        console.log("schedule list: ",this.schedule_List)},
+      (error) => console.log(error)
+    );
   }
+
+  Accept_Deny_Buttons(id:string,decision:boolean){
+    // console.log(this.schedule_List.map(function(e) { return e.accepted=decision; }));
+    console.log('filter: ',this.schedule_List
+    .map(function(e) {
+      if (e.id=='-M8KCWX-KQ3sVcxWr3vW')
+       return e.accepted=decision 
+    })
+    )
+
+
+    this.HttpService.Accept_Deny_schedule_request(id,decision)
+    .subscribe(
+      (response) => console.log(response),
+      (error) => console.log(error)
+      );
+  }
+
+  button_click(){}
   
 }

@@ -28,7 +28,7 @@ export class HttpserviceService {
             postsArray.push({...responseData[key],id:key});
           }
         }
-        console.log("inside get_recommended_certif in http service",postsArray);
+        // console.log("inside get_recommended_certif in http service",postsArray);
         return postsArray;
         })
       )//.pipe(map( array => {
@@ -36,11 +36,26 @@ export class HttpserviceService {
     //}))
     }
     get_Schedule_WhiteTest(){
-      return this.http.get('https://ng-prototype-10c50.firebaseio.com/schedule.json')
+      return this.http.get('https://ng-prototype-10c50.firebaseio.com/schedule.json').pipe(
+        map(responseData => {
+          const postsArray = [];
+          for (const key in responseData) {
+            if (responseData.hasOwnProperty((key))) {
+              postsArray.push({...responseData[key],id:key});
+            }
+          }
+          console.log("inside get_recommended_certif in http service",postsArray);
+          return postsArray;
+          })
+      )
     }
     
   
     Post_Schedule_WhiteTest_form(form){
       return this.http.post('https://ng-prototype-10c50.firebaseio.com/schedule.json', form)
+    }
+
+    Accept_Deny_schedule_request(id : string,decision:boolean){
+      return this.http.patch('https://ng-prototype-10c50.firebaseio.com/schedule/'+id+'.json','{"accepted":"'+decision+'"}');
     }
 }
