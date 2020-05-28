@@ -102,13 +102,11 @@ export class AdminComponent implements OnInit {
 
   Accept_Deny_Buttons(id:string,decision:boolean){
     // console.log(this.schedule_List.map(function(e) { return e.accepted=decision; }));
-    console.log('filter: ',this.schedule_List
+    this.schedule_List
     .map(function(e) {
-      if (e.id=='-M8KCWX-KQ3sVcxWr3vW')
+      if (e.id==id)
        return e.accepted=decision 
     })
-    )
-
 
     this.HttpService.Accept_Deny_schedule_request(id,decision)
     .subscribe(

@@ -91,8 +91,13 @@
                     </td>
                     <td>
                         <ngb-highlight [result]="" [term]="filter.value"></ngb-highlight>
-                        <button *ngIf="schedule.accepted == ['true'] || schedule.accepted === true" class="btn btn-sm btn-success mr-2" type="button">accepted</button> <!-- to make schedule.accepted == true work, true needs to be set as ['true'] -->
-                        <button *ngIf="schedule.accepted == ['false'] || schedule.accepted === false" class="btn btn-sm btn-danger mr-2" type="button">Denied</button> <!-- to make schedule.accepted == true work, true needs to be set as ['true'] -->
+                        <div *ngIf="schedule.accepted == ['true'] || schedule.accepted === true">
+                            <button class="btn btn-sm btn-success mr-2" type="button">accepted</button> <!-- to make schedule.accepted == true work, true needs to be set as ['true'] -->
+                            <button class="btn btn-sm btn-success mr-2" type="button">Cancel</button>
+                        </div>
+                        <div *ngIf="schedule.accepted == ['false'] || schedule.accepted === false">
+                            <button  class="btn btn-sm btn-danger mr-2" type="button">Denied</button> <!-- to make schedule.accepted == true work, true needs to be set as ['true'] -->
+                        </div>
                         <div *ngIf="schedule.accepted == undefined">
                             <button class="btn btn-sm btn-success mr-2" type="button" (click)="Accept_Deny_Buttons(schedule.id,true)">Accept</button>
                             <button class="btn btn-sm btn-danger" type="button" (click)="Accept_Deny_Buttons(schedule.id,false)">Deny</button>
