@@ -18,7 +18,7 @@ import { DisplayNameFilter } from "../pipes/displayvalue.pipe";
   exports: [SelectEditorComponent]
 })
 export class SelectEditorModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<SelectEditorModule> {
     return {
       ngModule: SelectEditorModule,
     }

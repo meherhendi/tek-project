@@ -1,4 +1,4 @@
-import { Component, Input, ElementRef, ViewChild, Renderer, forwardRef, OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
+import { Component, Input, ElementRef, ViewChild, forwardRef, OnInit, Output, EventEmitter, ViewEncapsulation, Renderer2 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const TYPEAHEAD_EDIT_CONTROL_VALUE_ACCESSOR = {
@@ -27,7 +27,7 @@ const TYPEAHEAD_EDIT_CONTROL_VALUE_ACCESSOR = {
           {{requiredMessage}}
       </div>
   <div class="typeahead-menu" *ngIf="open">
-      <div class="typeahead-item" [class.scrollSelected]="isIndexSelected(item,i)"  *ngFor="let item of availOptions; let i = index" (click)="selectItem(item)" [innerHTML]="item[displayValue] | highlight:[aheadKey]"></div>
+      <div class="typeahead-item" [class.scrollSelected]="isIndexSelected(item,i)"  *ngFor="let item of availOptions; let i = index" (click)="selectItem(item)" [innerHTML]="item[displayValue] | highlight:aheadKey"></div>
   </div>
 </div>
 <div *ngIf="!editing">
@@ -55,7 +55,7 @@ const TYPEAHEAD_EDIT_CONTROL_VALUE_ACCESSOR = {
 })
 export class TypeAheadEditorComponent implements ControlValueAccessor, OnInit {
 
-  @ViewChild('typeaheadEditorControl',{static: false}) typeaheadEditorControl: ElementRef; // input DOM element
+  @ViewChild('typeaheadEditorControl') typeaheadEditorControl: ElementRef; // input DOM element
   @Input() label: string = '';
   @Input() placeholder: string = '';
   @Input() required: string = 'false';
@@ -84,7 +84,7 @@ export class TypeAheadEditorComponent implements ControlValueAccessor, OnInit {
   private _originalValue: any;
   private _value: string = ''; // Private variable for input value
 
-  constructor(element: ElementRef, private _renderer: Renderer) { }
+  constructor(element: ElementRef, private _renderer: Renderer2) { }
 
   onSaveTypeahead() {
     if (this.required == "true") {

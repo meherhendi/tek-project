@@ -11,7 +11,7 @@ import { InputEditorComponent } from './input-editor.component';
   exports: [InputEditorComponent]
 })
 export class InputEditorModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<InputEditorModule> {
     return {
       ngModule: InputEditorModule,
     }

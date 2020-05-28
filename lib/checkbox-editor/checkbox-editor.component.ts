@@ -1,4 +1,4 @@
-import { Component, Input, ElementRef, ViewChild, Renderer, forwardRef, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, ElementRef, ViewChild, forwardRef, OnInit, Output, EventEmitter, Renderer2 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const CHECKBOX_EDIT_CONTROL_VALUE_ACCESSOR = {
@@ -43,7 +43,7 @@ const CHECKBOX_EDIT_CONTROL_VALUE_ACCESSOR = {
 })
 export class CheckBoxEditorComponent implements ControlValueAccessor, OnInit {
 
-    @ViewChild('checkboxEditorControl', {static : false}) checkboxEditorControl: ElementRef;
+    @ViewChild('checkboxEditorControl') checkboxEditorControl: ElementRef;
     @Input() label: string = ''; // Placeholder value for input element
     @Input() required: boolean = false; // Is input requried?
     @Input() disabled: string = 'false'; // Is input disabled?
@@ -62,7 +62,7 @@ export class CheckBoxEditorComponent implements ControlValueAccessor, OnInit {
     private _originalValue: any;
     private _value: true; // Private variable for input value
 
-    constructor(element: ElementRef, private _renderer: Renderer) { }
+    constructor(element: ElementRef, private _renderer: Renderer2) { }
 
     onSaveCheckBox() {
         if (this._originalValue != this._value) {

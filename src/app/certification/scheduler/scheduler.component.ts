@@ -24,7 +24,7 @@ export class SchedulerComponent implements OnInit {
 
   constructor(private calendar: NgbCalendar,private route : ActivatedRoute,private HttpService : HttpserviceService) { }
 
-  @ViewChild(ListFocusComponent, { static: false }) child;
+  @ViewChild(ListFocusComponent) child;
 
   ngOnInit() {
     this.identifier = this.route.snapshot.params['identifier'];

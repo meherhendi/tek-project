@@ -12,7 +12,7 @@ import { TextAreaEditorComponent } from './textarea-editor.component';
   exports: [TextAreaEditorComponent]
 })
 export class TextAreaEditorModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<TextAreaEditorModule> {
     return {
       ngModule: TextAreaEditorModule,
     }

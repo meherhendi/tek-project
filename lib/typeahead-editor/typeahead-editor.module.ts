@@ -18,7 +18,7 @@ import { HighLightPipe } from "../pipes/texthighlight.pipe";
   exports: [TypeAheadEditorComponent]
 })
 export class TypeAheadEditorModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<TypeAheadEditorModule> {
     return {
       ngModule: TypeAheadEditorModule,
     }

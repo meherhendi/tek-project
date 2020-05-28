@@ -1,4 +1,4 @@
-import { Component, Input, ElementRef, ViewChild, Renderer, forwardRef, Output, EventEmitter, OnInit, HostListener } from '@angular/core';
+import { Component, Input, ElementRef, ViewChild, forwardRef, Output, EventEmitter, OnInit, HostListener, Renderer2 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const SELECT_CONTROL_VALUE_ACCESSOR = {
@@ -49,7 +49,7 @@ const SELECT_CONTROL_VALUE_ACCESSOR = {
   providers: [SELECT_CONTROL_VALUE_ACCESSOR]
 })
 export class SelectEditorComponent implements ControlValueAccessor, OnInit {
-  @ViewChild('selectEditorControl',{static: false}) selectEditorControl: ElementRef;
+  @ViewChild('selectEditorControl') selectEditorControl: ElementRef;
   @Input() label: string = '';  // Label value for input element
   @Input() required: string = 'false'; // Is input requried?
   @Input() requiredMessage: string = '';
@@ -72,9 +72,9 @@ export class SelectEditorComponent implements ControlValueAccessor, OnInit {
   public selectReqflag: boolean = false;
   private _value: any = ''; // Private variable for input value
   private _originalValue: any;
-  private open: boolean = false;
+  public open: boolean = false;
   
-  constructor(private _elementRef: ElementRef, private _renderer: Renderer) { }
+  constructor(private _elementRef: ElementRef, private _renderer: Renderer2) { }
 
   @HostListener('document:click',['$event','$event.target'])
   public onClick(event: MouseEvent, targetElement: HTMLElement): void {

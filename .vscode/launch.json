@@ -4,7 +4,6 @@
       {
           "name": "Attach to Chrome, with sourcemaps",
           "type": "chrome",
-          "userDataDir": "${workspaceFolder}/.vscode/chrome",
           "request": "attach",
           "port": 9222,
           "sourceMaps": true,

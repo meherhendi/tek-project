@@ -12,7 +12,7 @@ import { CheckBoxEditorComponent } from './checkbox-editor.component';
   exports: [CheckBoxEditorComponent]
 })
 export class CheckBoxEditorModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<CheckBoxEditorModule> {
     return {
       ngModule: CheckBoxEditorModule,
     }

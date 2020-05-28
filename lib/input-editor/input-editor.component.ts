@@ -1,4 +1,4 @@
-import { Component, Input, ElementRef, ViewChild, Renderer, forwardRef, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, ElementRef, ViewChild, forwardRef, OnInit, Output, EventEmitter, Renderer2 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const INLINE_EDIT_CONTROL_VALUE_ACCESSOR = {
@@ -46,7 +46,7 @@ const INLINE_EDIT_CONTROL_VALUE_ACCESSOR = {
 })
 export class InputEditorComponent implements ControlValueAccessor, OnInit {
 
-  @ViewChild('inputEditorControl',{static: false}) inputEditorControl: ElementRef; // input DOM element
+  @ViewChild('inputEditorControl') inputEditorControl: ElementRef; // input DOM element
   @Input() label: string = '';  // Label value for input element
   @Input() placeholder: string = ''; // Placeholder value ofr input element
   @Input() type: string = 'text'; // The type of input element
@@ -67,7 +67,7 @@ export class InputEditorComponent implements ControlValueAccessor, OnInit {
   private _originalValue:any;
   private _value: string = ''; // Private variable for input value
 
-  constructor(element: ElementRef, private _renderer: Renderer) { }
+  constructor(element: ElementRef, private _renderer: Renderer2) { }
   
   onSaveInput() {
     if(this.required == "true"){

@@ -1,4 +1,4 @@
-import { Component, Input, ElementRef, ViewChild, Renderer, forwardRef, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, ElementRef, ViewChild, forwardRef, OnInit, Output, EventEmitter, Renderer2 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const TIME_EDIT_CONTROL_VALUE_ACCESSOR = {
@@ -60,7 +60,7 @@ const TIME_EDIT_CONTROL_VALUE_ACCESSOR = {
 })
 export class TimeEditorComponent implements ControlValueAccessor, OnInit {
 
-  @ViewChild('timeEditorControl',{static: false}) timeEditorControl: ElementRef; // input DOM element
+  @ViewChild('timeEditorControl') timeEditorControl: ElementRef; // input DOM element
   @Input() label: string = '';  // Label value for input element
   @Input() placeholder: string = ''; // Placeholder value ofr input element
   @Input() type: string = 'text'; // The type of input element
@@ -83,7 +83,7 @@ export class TimeEditorComponent implements ControlValueAccessor, OnInit {
   private _originalValue: any;
   private _value: any; // Private variable for input value
 
-  constructor(element: ElementRef, private _renderer: Renderer) { }
+  constructor(element: ElementRef, private _renderer: Renderer2) { }
 
   onSaveTime() {
     if (this.required == "true") {

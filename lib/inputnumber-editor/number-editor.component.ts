@@ -1,4 +1,4 @@
-import { Component, Input, ElementRef, ViewChild, Renderer, forwardRef, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, ElementRef, ViewChild, forwardRef, OnInit, Output, EventEmitter, Renderer2 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const NUMBER_EDIT_CONTROL_VALUE_ACCESSOR = {
@@ -56,7 +56,7 @@ const NUMBER_EDIT_CONTROL_VALUE_ACCESSOR = {
 })
 export class NumberEditorComponent implements ControlValueAccessor, OnInit {
 
-  @ViewChild('numberEditorControl',{static: false}) numberEditorControl: ElementRef;
+  @ViewChild('numberEditorControl') numberEditorControl: ElementRef;
   @Input() label: string = '';  // Label value for input element
   @Input() placeholder: string = ''; // Placeholder value ofr input element
   @Input() required: string = 'false'; // Is input requried?
@@ -79,7 +79,7 @@ export class NumberEditorComponent implements ControlValueAccessor, OnInit {
   private _originalValue: any;
   private _value: number; // Private variable for input value
 
-  constructor(element: ElementRef, private _renderer: Renderer) { }
+  constructor(element: ElementRef, private _renderer: Renderer2) { }
 
   onSaveInputNumber() {
     const enteredValue = this.numberEditorControl.nativeElement.value;

@@ -1,4 +1,4 @@
-import { Component, Input, ElementRef, ViewChild, Renderer, forwardRef, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, ElementRef, ViewChild, forwardRef, OnInit, Output, EventEmitter, Renderer2 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 //import { Console } from '@angular/core/src/console';
 
@@ -55,7 +55,7 @@ const CHECKLIST_EDIT_CONTROL_VALUE_ACCESSOR = {
 })
 export class CheckListEditorComponent implements ControlValueAccessor, OnInit {
 
-  @ViewChild('checklistEditorControl' , {static: false}) checklistEditorControl: ElementRef; // input DOM element
+  @ViewChild('checklistEditorControl') checklistEditorControl: ElementRef; // input DOM element
   @Input() label: string = '';  // Label value for input element
   @Input() placeholder: string = ''; // Placeholder value ofr input element
   @Input() type: string = 'text'; // The type of input element
@@ -78,7 +78,7 @@ export class CheckListEditorComponent implements ControlValueAccessor, OnInit {
   private _originalValue: any;
   private _value: any[] = []; // Private variable for input value
 
-  constructor(element: ElementRef, private _renderer: Renderer) { }
+  constructor(element: ElementRef, private _renderer: Renderer2) { }
 
   onSaveChecklist() {
     if (this.required == "true") {

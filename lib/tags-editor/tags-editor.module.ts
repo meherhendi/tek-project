@@ -12,7 +12,7 @@ import { TagsEditorComponent } from './tags-editor.component';
   exports: [TagsEditorComponent]
 })
 export class TagsEditorModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<TagsEditorModule> {
     return {
       ngModule: TagsEditorModule,
     }

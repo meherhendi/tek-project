@@ -1,4 +1,4 @@
-import { Component, Input, ElementRef, ViewChild, Renderer, forwardRef, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, ElementRef, ViewChild, forwardRef, OnInit, Output, EventEmitter, Renderer2 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const DATETIME_EDIT_CONTROL_VALUE_ACCESSOR = {
@@ -60,7 +60,7 @@ const DATETIME_EDIT_CONTROL_VALUE_ACCESSOR = {
 })
 export class DateTimeEditorComponent implements ControlValueAccessor, OnInit {
 
-  @ViewChild('datetimeEditorControl',{static: false}) datetimeEditorControl: ElementRef; // input DOM element
+  @ViewChild('datetimeEditorControl') datetimeEditorControl: ElementRef; // input DOM element
   @Input() label: string = '';  // Label value for input element
   @Input() placeholder: string = ''; // Placeholder value ofr input element
   @Input() required: string = 'false'; // Is input requried?
@@ -84,10 +84,10 @@ export class DateTimeEditorComponent implements ControlValueAccessor, OnInit {
 
   showTimePicker:boolean =false;
 
-  @ViewChild('dp',{static: false}) ctrldp: any;
+  @ViewChild('dp') ctrldp: any;
 
 
-  constructor(element: ElementRef, private _renderer: Renderer) { }
+  constructor(element: ElementRef, private _renderer: Renderer2) { }
 
   SelectedDate(){
       // check if value is null or undefined

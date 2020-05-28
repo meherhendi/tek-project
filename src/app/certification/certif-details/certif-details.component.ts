@@ -8,6 +8,10 @@ import { AuthService } from 'src/app/auth/auth.service';
 import {HttpserviceService} from 'src/app/shared/httpservice.service'
 import { Subscription } from 'rxjs';
 
+interface recommended_certif {
+  name:string;
+  imagelink:string;
+}
 
 
 @Component({
@@ -15,6 +19,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './certif-details.component.html',
   styleUrls: ['./certif-details.component.css']
 })
+
 
 
 export class CertifDetailsComponent implements OnInit {
@@ -26,7 +31,7 @@ export class CertifDetailsComponent implements OnInit {
   currentJustify = 'fill';
   certif : Certif = new Certif("",null,"","",[],"","",[],[]) ;
   //cetif_inside_recommended : {name : string ;imagelink :}
-  recommended : object[];
+  recommended : recommended_certif[];
 
   
   constructor(private router : Router ,

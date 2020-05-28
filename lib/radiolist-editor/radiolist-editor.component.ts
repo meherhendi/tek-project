@@ -1,4 +1,4 @@
-import { Component, Input, ElementRef, ViewChild, Renderer, forwardRef, OnInit, Output, EventEmitter } from "@angular/core";
+import { Component, Input, ElementRef, ViewChild, forwardRef, OnInit, Output, EventEmitter, Renderer2 } from "@angular/core";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const RADIOLIST_EDIT_CONTROL_VALUE_ACCESSOR = {
@@ -50,7 +50,7 @@ const RADIOLIST_EDIT_CONTROL_VALUE_ACCESSOR = {
 })
 export class RadioListEditorComponent implements ControlValueAccessor, OnInit {
 
-    @ViewChild('radiolistEditorControl',{static: false}) radiolistEditorControl: ElementRef; // input DOM element
+    @ViewChild('radiolistEditorControl') radiolistEditorControl: ElementRef; // input DOM element
     @Input() label: string = '';  // Label value for input element
     @Input() required: string = 'false';
     @Input() requiredMessage: string = '';
@@ -73,7 +73,7 @@ export class RadioListEditorComponent implements ControlValueAccessor, OnInit {
     private _originalValue: any;
     private _value: any[] = []; // Private variable for input value
 
-    constructor(element: ElementRef, private _renderer: Renderer) { }
+    constructor(element: ElementRef, private _renderer: Renderer2) { }
 
     onSaveRadiolist() {
         if (this.required == "true") {

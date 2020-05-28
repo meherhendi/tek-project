@@ -11,7 +11,7 @@ import { NumberEditorComponent } from './number-editor.component';
   exports: [NumberEditorComponent]
 })
 export class NumberEditorModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<NumberEditorModule> {
     return {
       ngModule: NumberEditorModule,
     }

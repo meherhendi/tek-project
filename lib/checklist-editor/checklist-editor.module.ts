@@ -12,7 +12,7 @@ import { CheckListEditorComponent } from './checklist-editor.component';
   exports: [CheckListEditorComponent]
 })
 export class CheckListEditorModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<CheckListEditorModule> {
     return {
       ngModule: CheckListEditorModule,
     }

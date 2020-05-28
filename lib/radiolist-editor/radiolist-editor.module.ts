@@ -12,7 +12,7 @@ import { RadioListEditorComponent } from './radiolist-editor.component';
   exports: [RadioListEditorComponent]
 })
 export class RadioListEditorModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<RadioListEditorModule> {
     return {
       ngModule: RadioListEditorModule,
     }

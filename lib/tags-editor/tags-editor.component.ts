@@ -1,4 +1,4 @@
-import { Component, Input, ElementRef, ViewChild, Renderer, forwardRef, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, ElementRef, ViewChild, forwardRef, OnInit, Output, EventEmitter, Renderer2 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const TAGS_EDIT_CONTROL_VALUE_ACCESSOR = {
@@ -66,7 +66,7 @@ const TAGS_EDIT_CONTROL_VALUE_ACCESSOR = {
 })
 export class TagsEditorComponent implements ControlValueAccessor, OnInit {
 
-  @ViewChild('tagsEditorControl',{static: false}) tagsEditorControl: ElementRef; // input DOM element
+  @ViewChild('tagsEditorControl') tagsEditorControl: ElementRef; // input DOM element
   @Input() label: string = '';  // Label value for input element
   @Input() placeholder: string = ''; // Placeholder value ofr input element
   @Input() required: string = 'false'; // Is input requried?
@@ -88,7 +88,7 @@ export class TagsEditorComponent implements ControlValueAccessor, OnInit {
   private _originalValue:any;
   private _value: string[] = []; // Private variable for input value
 
-  constructor(element: ElementRef, private _renderer: Renderer) { }
+  constructor(element: ElementRef, private _renderer: Renderer2) { }
 
   onSaveTags() {
     if(this.required == "true"){
